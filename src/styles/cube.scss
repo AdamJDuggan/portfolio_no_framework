@@ -1,0 +1,92 @@
+@keyframes turn {
+    0% {
+      transform: rotateY(0deg);
+    }
+    25% {
+      transform: rotateY(90deg);
+    }
+    50% {
+      transform: rotateY(180deg);
+    }
+    75% {
+      transform: rotateY(270deg);
+    }
+    100% {
+      transform: rotateY(360deg);
+    }
+  }
+  
+  .cube-wrapper{
+    margin: 100px;
+  }
+  
+  .cube-container {
+    position: relative;
+    perspective: 500px;
+  }
+  
+  // customize the cubes size by changing width and height and than ajusting $translateX to fit the distance between the faces of the cube
+  $cubeSize: 14rem;
+  $translateX: 7rem;
+  $rotateY: 90deg;
+  
+  .cube {
+    width: $cubeSize;
+    height: $cubeSize;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: turn 29s ease-in-out 0s infinite;
+  
+    &:hover {
+      animation-play-state: paused;
+    }
+  }
+  
+  .face {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $primary;
+    height: 100%;
+    opacity: 0.8;
+  }
+  
+  $cubeColors: (
+    front: #02d502,
+    left: #ffff30,
+    right: #02d502,
+    back: #d02020,
+    top: white,
+    bottom: white
+  );
+  
+  // creating each side of the cube with common properties and its own bg-color
+  @each $class, $backColor in $cubeColors {
+    .#{$class} {
+      width: $cubeSize;
+      height: $cubeSize;
+      background-color: #{$backColor};
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  
+  .front {
+    transform: translateZ($translateX);
+  }
+  .left {
+    transform: translateX(-$translateX) rotateY(-$rotateY);
+  }
+  .right {
+    transform: translateZ(-$translateX) rotateY($rotateY * 2);
+  }
+  .back {
+    transform: translateX($translateX) rotateY($rotateY);
+  }
+  .top {
+    transform: translateY(-$translateX) rotateX($rotateY);
+  }
+  .bottom {
+    transform: translateY($translateX) rotateX(-$rotateY);
+  }

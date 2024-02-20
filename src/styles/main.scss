@@ -1,0 +1,208 @@
+@import 'reset.scss';
+@import 'elements.scss';
+@import 'variables.scss';
+@import 'cube.scss';
+
+
+
+// Main
+body{
+  font-family: $primary-font;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  background-color: $dark;
+  color: $light;
+  perspective: 1000px;
+}
+
+header, section{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+section {
+  padding: 20px 0;
+}
+
+h1, h2{
+  font-size: $lg;
+  text-transform: uppercase;
+}
+
+h2{
+  span{
+    display: block;
+  }
+  padding: 15px 0 25px 0;
+  margin-bottom: 80px;
+}
+
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px;
+}
+
+/**
+* Header
+*/
+header {
+  position: relative;
+  background: transparent;
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    gap: 30px;
+  }
+  nav {
+    display: flex;
+    gap: 20px;
+    text-transform: uppercase;
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+@keyframes move-rtl {
+  0%{
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+.marquee-wrapper{
+  overflow: hidden;
+  margin-top: 20px;
+  opacity: 0.8;
+}
+.marquee{
+  display: flex;
+  justify-content: flex-start;
+  animation: move-rtl 10000ms linear infinite; 
+  span{
+  white-space: nowrap;
+  margin-right: 5px;
+  }
+  span:nth-child(2n){
+    color: $primary;
+  }
+}
+
+  .latestwork{
+    text-align: end;
+  }
+}
+@media screen and (min-width: 600px) {
+  header {
+    .title {
+      display: flex;
+      overflow: hidden;
+      align-items: center;
+    }
+    .marquee-wrapper {
+      visibility: hidden;
+    }
+    .cube-container{
+      visibility: visible;
+    }
+  } 
+}
+
+
+
+
+
+
+/**
+* Work
+*/
+#work{
+    background-color: $dark;
+    color: $light;
+    .h2-work {
+      border-top: 2px dashed $light;
+      border-bottom: 2px dashed $light;
+    }
+    .work-text{
+    text-align: end;
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 60px;
+    text-transform: uppercase;
+  }
+  .work-blocks-img{
+    border: 1px solid $primary;
+    margin-bottom: 20px;
+  }
+    .work-bar {
+        position: relative;
+        height: 10px;
+        position: relative;
+        border: 1px solid $light;
+        .work-bar-inner{
+          position: absolute;
+          height: 80%;
+          width: 0%;
+          background-color: $primary;
+        }
+      }
+    
+      .work-bar-one{
+        width: 200px;
+        margin-bottom: 10px;
+      }
+      .work-bar-two{
+        width: 150px;
+      }
+}
+
+
+// #work{
+
+
+
+
+
+   
+//   }
+// }
+
+// About section
+#about {
+  background-color: $light;
+  color: $dark;
+  .h2-about {
+    border-top: 2px dashed $dark;
+    border-bottom: 2px dashed $dark;
+  }
+ 
+}
+
+
+
+// Utility
+.font-retro{
+  font-family: $retro-font;
+}
+
+.text-xl{
+  font-size: $xl;
+}
+
+.text-secondary {
+  color: $primary;
+}
